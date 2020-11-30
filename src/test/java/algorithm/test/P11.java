@@ -49,14 +49,18 @@ public class P11 {
 	}
 	 
 	static class Physc {
-		private String name;
-		private int height;
-		private double vision;
+		String name;
+		int height;
+		double vision;
 		
 		Physc(String name, int height, double vision) {
 			this.name = name;
 			this.height = height;
 			this.vision = vision;
+		}
+		
+		public String toString() {
+			return this.name + "," + this.height + ", " + this.vision;
 		}
 	}
 }
