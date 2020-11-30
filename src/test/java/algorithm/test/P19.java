@@ -18,6 +18,11 @@ public class P19 {
 		stk.push(5435);
 		
 		stk.pop();
+		stk.pop();
+		
+		System.out.println("peek : " + stk.peek());
+		
+		stk.pop();
 		
 		stk.dump();
 	}
@@ -36,11 +41,13 @@ public class P19 {
 	@SuppressWarnings("unchecked")
 	public static class Gstack<E> {
 		private int max;
-		private int ptr = 0;
+		private int ptr;
 		private E[] stk;
 		
 		Gstack(int size){
 			this.stk = (E[]) new Object[size];
+			this.ptr = 0;
+			this.max = size;
 		}
 		
 		int size(){
@@ -52,17 +59,23 @@ public class P19 {
 		}
 		
 		E push(E n) throws OverflowStackException{
-			if(ptr >= max) throw new OverflowStackException();
+			if(ptr >= max) {
+				throw new OverflowStackException();
+			}
 			return stk[ptr++] = n; 
 		}
 		
 		E pop() throws EmptyStackException{
-			if(ptr <= 0) throw new EmptyStackException();
+			if(ptr <= 0) {
+				throw new EmptyStackException();
+			}
 			return stk[--ptr];
 		}
 		
 		E peek() throws EmptyStackException{
-			if(ptr <= 0) throw new EmptyStackException();
+			if(ptr <= 0) {
+				throw new EmptyStackException();
+			}
 			return stk[ptr-1];
 		}
 		
