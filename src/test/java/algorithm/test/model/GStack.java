@@ -44,6 +44,10 @@ public class GStack<E> {
 		return stk[ptr-1];
 	}
 	
+	public boolean isEmpty() {
+		return ptr == 0 ? true:false;
+	}
+	
 	public void dump(){
 		if(ptr <= 0) {
 			System.out.println("스택이 비어 있습니다.");
