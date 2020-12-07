@@ -11,13 +11,12 @@ public class P33 {
 	}
 	
 	public void buble(int[] a) {
+		int x = 0;
 		for(int i = 0; i < a.length; i++) {
 			for(int j = 0; j < a.length -  1; j++) {
 				if(a[j+1] < a[j]) {
 					swap(a, j+1, j);
-					System.out.printf("%d%s", a[j], "+");
-				}else {
-					System.out.printf("%d%s", a[j], "-");
+					System.out.println(x++);
 				}
 			}
 			System.out.println();
