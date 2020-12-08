@@ -2,11 +2,19 @@ package algorithm.test;
 
 import org.junit.Test;
 
+/**
+ * @author nkt
+ *
+ *	버블 정렬 왼쪽에서 오른쪽으로
+ *
+ * Create by User Date : 2020. 12. 8.
+ *
+ */
 public class P33 {
 	private String str = "";
 	@Test
 	public void test() {
-		int[] a = {6,4,3,7,1,9,8};
+		int[] a = {6, 4, 3, 7, 1, 9, 8};
 		buble(a);
 	}
 	
