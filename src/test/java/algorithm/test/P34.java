@@ -19,7 +19,7 @@ public class P34 {
 				if(a[j-1] > a[j]) {
 					swap(a, j-1, j);
 					System.out.println(x++);
-					ex++;
+					ex++; 
 				}
 			}
 			if(ex ==0) break;

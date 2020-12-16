@@ -8,6 +8,7 @@ public class P1 {
 		System.out.println(max3(1, 2, 3));
 		System.out.println(max4(3,234,6546,54645));
 		System.out.println(min4(456,645,6456,43));
+		System.out.println(1-0);
 	}
 	
 	public int max3(int a, int b, int c) {
