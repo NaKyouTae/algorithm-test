@@ -5,11 +5,36 @@ import org.junit.Test;
 public class P34 {
 	@Test
 	public void test() {
-		int[] a = {1, 3, 9, 4, 7, 8, 6};
+		int[] a = {6, 4, 3, 7, 1, 9, 8};
 		
-		buble1(a);
-		print(a);
+		buble2(a);
+//		print(a);
 	}
+	
+	public void buble2(int[] a) {
+		int ex = 0;
+		int com = 0;
+		int len = a.length;
+		
+		for(int i = 0; i < len-1; i++) {
+			for(int j = len-1; j > i; j--) {
+				for(int k = 0; k < len - 1; k++) {
+					System.out.printf("%d%c", a[k], (k != j-1)? ' ':(a[j-1] > a[j]) ? '+':'-');
+				}
+				System.out.printf("%d\n", a[len-1]);
+				
+				com++;
+				if(a[j-1] > a[j]) {
+					swap(a, j-1, j);
+					ex++;
+				}
+			}
+			System.out.println();
+		}
+		System.out.println("비교 횟수 : " + com);
+		System.out.println("교환 횟수 : " + ex);
+	}
+	
 	
 	public void buble1(int[] a) {
 		int x = 0;

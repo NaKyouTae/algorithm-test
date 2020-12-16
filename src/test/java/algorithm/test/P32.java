@@ -4,6 +4,14 @@ import org.junit.Test;
 
 import algorithm.test.model.GStack;
 
+/**
+ * @author nkt
+ *
+ *	8퀸 비재귀
+ *
+ * Create by User Date : 2020. 12. 8.
+ *
+ */
 public class P32 {
 	private boolean[] flag_a = new boolean[8];
 	private boolean[] flag_b = new boolean[15];
