@@ -15,10 +15,24 @@ public class P47Set {
 		System.out.println("g : " + g.toString());
 		
 		GSortedSet<Integer> t = new GSortedSet<>(20);
-		t.add(12);
-		t.add(16);
+		t.add(20);
 		t.add(13);
 		t.add(15);
+		t.add(16);
+		t.add(12);
+		t.add(17);
+		t.add(18);
+		t.add(22);
+		t.add(27);
+		t.add(29);
+		t.add(19);
+		t.add(28);
+		t.add(21);
+		t.add(23);
+		t.add(24);
+		t.add(25);
+		t.add(26);
+		
 		
 		System.out.println("t : " + t.toString());
 		

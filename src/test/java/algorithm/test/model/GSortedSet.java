@@ -98,6 +98,12 @@ public class GSortedSet<T> {
 	public String toString() {
 		if(this.num == 0) return "집합이 비어 있습니다.";
 		
+		if(this.num < 9) {
+			insertSort();
+		}else {
+			quickSort(0, this.num-1);
+		}
+		
 		StringBuilder sb = new StringBuilder("{ ");
 		for(int i = 0; i < num; i++) {
 			sb.append(this.set[i] + " ");
@@ -235,5 +241,39 @@ public class GSortedSet<T> {
 			if(!t.contains(s.set[i]))
 				add(s.set[i]);
 		}
+	}
+	
+	public void insertSort() {
+		for(int i = 1; i < num; i++) {
+			int j;
+			T temp = this.set[i];
+			for(j = i; j > 0 && (int) this.set[j-1] > (int) temp; j--) {
+				this.set[j] = this.set[j - 1];
+			}
+			this.set[j] = temp;
+		}
+	}
+	
+	public void quickSort(int left, int right) {
+		int pl = left;
+		int pr = right;
+		int c = (int) this.set[(pl+pr) / 2];
+		
+		do {			
+			while((int) this.set[pl] < c) pl++;
+			while((int) this.set[pr] > c) pr--;
+			if(pl <= pr) {
+				swap(pl++, pr--);
+			}
+		}while(pl <= pr);
+		
+		if(left < pr) quickSort(left, pr);
+		if(right > pl) quickSort(pl, right);
+	}
+	
+	public void swap(int x, int y) {
+		T temp = this.set[x];
+		this.set[x] = this.set[y];
+		this.set[y] = temp;
 	}
 }
