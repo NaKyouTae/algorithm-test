@@ -2,6 +2,13 @@ package algorithm.test;
 
 import org.junit.Test;
 
+/**
+ * @author nkt
+ * P. 305 8-3
+ *
+ * Create by User Date : 2020. 12. 28.
+ *
+ */
 public class P51BM {
 	@Test
 	public void test() {
@@ -17,7 +24,7 @@ public class P51BM {
 		int tl = t.length();
 		int pl = p.length();
 		int[] s = new int[Character.MAX_VALUE + 1];
-		
+		int count = 0;
 		
 		for(pt = 0; pt <= Character.MAX_VALUE; pt++) {
 			s[pt] = pl;
@@ -28,22 +35,31 @@ public class P51BM {
 		
 		while(pt < tl) {
 			pp = pl - 1;
+			
+			System.out.println(t);
+			dispD(pt, t.charAt(pt) == p.charAt(pp));
+			dispSpace(pt-pp);
+			System.out.println(p);
+			count++;
 			while(t.charAt(pt) == p.charAt(pp)) {
-				System.out.println(t);
-				dispD(pt-pp, false);
-				dispSpace(pt-pp);
-				System.out.println(p);
 				if(pp == 0) {
+					System.out.println("비교 횟수 : " + count);
 					return pt;
 				}
 				pp--;
 				pt--;
 				
-				
+				System.out.println(t);
+				dispD(pt, t.charAt(pt) == p.charAt(pp));
+				dispSpace(pt-pp);
+				System.out.println(p);
+				count++;
 			}
+			
+
 			pt += (s[t.charAt(pt)] > pl - pp) ? s[t.charAt(pt)]:pl - pp;
 		}
-		
+		System.out.println("비교 횟수 : " + count);
 		return -1;
 	}
 	
