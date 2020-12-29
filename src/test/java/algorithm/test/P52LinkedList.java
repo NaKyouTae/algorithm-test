@@ -1,6 +1,7 @@
 package algorithm.test;
 
 import java.util.Comparator;
+import java.util.LinkedList;
 
 import org.junit.Test;
 
@@ -29,15 +30,28 @@ public class P52LinkedList {
 		gl.addLast(9);
 		gl.addLast(10);
 		gl.addLast(11);
-		gl.addLast(12);
 		gl.addLast(13);
+		gl.addLast(12);
+		
+		
+		gl.removeFirst();
+		gl.removeFirst();
+		gl.removeLast();
+		gl.removeFirst();
+		
 		
 		gl.dump();
-		System.out.println();
-		gl.purge(Order);
+//		gl.purge(Order);
 		gl.dump();
 		
-		gl.retrieve(3);
+		int n = 10;
+		
+		System.out.println("요청 노트 번호 : " + n + ", 노드 값 : " + gl.retrieve(n));
+		System.out.println(gl.lastIndexOf(13));
+		System.out.println(gl.getSize());
+		System.out.println(gl.getLast());
+		System.out.println(gl.contains(13));
+		
 	}
 	public static final Comparator<Integer> Order = new GComparator();
 	private static class GComparator implements Comparator<Integer> {
