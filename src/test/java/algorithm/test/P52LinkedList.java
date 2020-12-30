@@ -24,7 +24,7 @@ public class P52LinkedList {
 		gl.addLast(3);
 		gl.addLast(4);
 		gl.addLast(13);
-		gl.addLast(6);
+		gl.addFirst(6);
 		gl.addLast(7);
 		gl.addLast(8);
 		gl.addLast(9);
