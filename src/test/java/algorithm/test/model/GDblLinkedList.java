@@ -2,6 +2,16 @@ package algorithm.test.model;
 
 import java.util.Comparator;
 
+/**
+ * @author      : "NKT"
+ * @date        : 2021-01-05 11:24
+
+ * @description
+ * ==============================================================
+ * Doubly Linked List 원형 연결 리스트
+ * 
+ * ==============================================================
+ */
 public class GDblLinkedList<T> {
 	class Node<T> {
 		private T data;
@@ -23,7 +33,6 @@ public class GDblLinkedList<T> {
 	private Node<T> head;
 	private Node<T> crnt;
 	private Node<T> tail;
-	
 	
 	public GDblLinkedList() {
 		this.head = this.crnt = this.tail = new Node<T>();
@@ -91,22 +100,20 @@ public class GDblLinkedList<T> {
 		}
 	}
 	
-	public void add(T obj, boolean type) {
+	public void add(T obj) {
 		Node<T> node = new Node<T>(obj, this.crnt, this.crnt.next);
-		
 		this.crnt.next = this.crnt.next.prev = node;
 		this.crnt = node;
-		if(this.crnt.prev == node) this.tail = node;
 	}
 	
 	public void addFirst(T obj) {
 		this.crnt = this.head;
-		add(obj, true);
+		add(obj);
 	}
 	
 	public void addLast(T obj) {
 		this.crnt = this.head.prev;
-		add(obj, false);
+		add(obj);
 	}
 	
 	public void removeCurrentNode() {
@@ -142,7 +149,6 @@ public class GDblLinkedList<T> {
 	
 	public void removeLast() {
 		this.crnt = this.head.prev;
-		this.tail = this.crnt.prev;
 		removeCurrentNode();
 	}
 	
@@ -161,5 +167,47 @@ public class GDblLinkedList<T> {
 	
 	public T getTail() {
 		return this.tail.data;
+	}
+	
+	public void purge(Comparator<? super T> c) {
+		Node<T> ptr = this.head.next;
+		
+		while(ptr.next != this.head) {
+			int count = 0;
+			Node<T> ptr2 = ptr;
+			Node<T> pre = ptr;
+			
+			while(pre.next != this.head) {
+				ptr2 = pre.next;
+				if(c.compare(ptr.data, ptr2.data) == 0) {
+					pre.next = ptr2.next;
+					count++;
+				}else {
+					pre = ptr2;
+				}
+			}
+			
+			if(count == 0) {
+				ptr = ptr.next;
+			}else {
+				Node<T> temp = ptr;
+				remove(ptr);
+				ptr = temp.next; 
+			}
+		}
+		this.crnt = this.head;
+	}
+	
+	public T retrive(int n) {
+		Node<T> ptr = this.head.next;
+		
+		while(n >= 0 && ptr.next.next != head) {
+			if(n-- == 0) {
+				this.crnt = ptr;
+				return ptr.data;
+			}
+			ptr = ptr.next;
+		}
+		return null;
 	}
 }

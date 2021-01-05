@@ -42,27 +42,25 @@ public class P54DblLinkedList {
 		list.add(18);
 		list.add(19);
 		list.add(20);
+		list.add(1);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		list.add(6);
+		list.add(8);
+		list.add(9);
+		list.add(10);
+		list.add(11);
+		list.add(12);
+		list.add(13);
 		
-		list.removeCurrentNode();
-		list.dump();
-		list.removeFirst();
-		System.out.println();
 		list.dump();
 		
-		list.removeLast();
-		System.out.println();
-		list.dump();
-		list.addLast(3123);
-		System.out.println();
-		list.dump();
-		list.addFirst(321);
+		list.purge(COMPARATOR);
 		System.out.println();
 		list.dump();
 		System.out.println();
-		System.out.println("head : " + list.getHead());
-		System.out.println("crnt : " + list.getCrnt());
-		System.out.println("tail : " + list.getTail());
-		
+		System.out.println(list.retrive(4));
 		
 	}
 	
