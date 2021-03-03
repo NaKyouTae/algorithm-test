@@ -2,6 +2,16 @@ package algorithm.test;
 
 import org.junit.Test;
 
+/**
+ * @author      : "NKT"
+ * @date        : 2021-01-07 17:58
+
+ * @description
+ * ==============================================================
+ * 선택 삽입 정렬
+ * 
+ * ==============================================================
+ */
 public class P37 {
 	@Test
 	public void test() {
