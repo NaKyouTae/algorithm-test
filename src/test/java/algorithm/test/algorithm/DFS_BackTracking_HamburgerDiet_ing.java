@@ -6,13 +6,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
 import org.junit.Test;
 
-public class DFS_BackTracking_HamburgerDiet {
+public class DFS_BackTracking_HamburgerDiet_ing {
 	
 	public static List<Integer> list = new ArrayList<>();
 	public static int[] caloList;
@@ -20,7 +19,7 @@ public class DFS_BackTracking_HamburgerDiet {
 	public static boolean[] visit;
 	public static int limit;
 	public static int cal;
-	public static int point;	
+	public static int point;
 	public static int max;
 	
 	@Test
