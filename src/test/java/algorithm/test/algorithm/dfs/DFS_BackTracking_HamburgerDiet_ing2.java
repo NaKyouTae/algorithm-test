@@ -1,4 +1,4 @@
-package algorithm.test.algorithm;
+package algorithm.test.algorithm.dfs;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
