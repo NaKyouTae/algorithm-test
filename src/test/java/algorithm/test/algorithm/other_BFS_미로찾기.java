@@ -5,7 +5,7 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class other_BFS_미로찾기 {
-    static class Node{
+    static class Node {
         int r;
         int c;
         Node(int r, int c){
@@ -52,8 +52,5 @@ public class other_BFS_미로찾기 {
         }
 
         System.out.println(check[N-1][M-1]);
-
-
-
    }
 }
