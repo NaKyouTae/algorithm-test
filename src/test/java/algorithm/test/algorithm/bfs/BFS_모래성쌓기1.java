@@ -10,8 +10,27 @@ import java.util.Queue;
 
 import org.junit.Test;
 
+
+//2
+//5 6
+//......
+//.939..
+//.3428.
+//.9393.
+//......
+//10 10
+//..........
+//.99999999.
+//.9.323239.
+//.91444449.
+//.91444449.
+//.91444449.
+//.91444449.
+//.91232329.
+//.99999999.
+//..........
+
 public class BFS_모래성쌓기1 {
-	
 	public static class Node {
 		int x;
 		int y;
@@ -23,10 +42,9 @@ public class BFS_모래성쌓기1 {
 	public static String[][] arr;
 	public static int[][] brr;
 	public static Queue<Node> que = new LinkedList<>();
-	
-	public static int[] dx = { 0, 0, 1, -1, 1, -1, 1, -1 };
-	public static int[] dy = { 1, -1, 0, 0, 1, -1, -1, 1 };
 	public static int x, y;
+	public static int[] dx = {0, -1, -1, -1, 0, 1, 1, 1};
+	public static int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
 	
 	@Test
 	public void test() throws IOException {
@@ -37,10 +55,9 @@ public class BFS_모래성쌓기1 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
+		int e = Integer.parseInt(br.readLine());
 		
-		int T = Integer.parseInt(br.readLine());
-		
-		for(int e = 0; e < T; e++) {
+		for (int p = 0; p < e; p++) {
 			
 			String[] str = br.readLine().split(" ");
 			x = Integer.parseInt(str[0]);
@@ -56,10 +73,9 @@ public class BFS_모래성쌓기1 {
 				}
 			}
 			
-			
 			for (int i = 0; i < x; i++) {
 				for (int j = 0; j < y; j++) {
-					if(!arr[i][j].equals(".") && !arr[i][j].equals("9")) {						
+					if(!arr[i][j].equals(".") && !arr[i][j].equals("9")) {
 						for (int j2 = 0; j2 < 8; j2++) {
 							int xx = dx[j2] + i, yy = dy[j2] + j;
 							if(xx < x && yy < y && xx >= 0 && yy >= 0) {
@@ -69,6 +85,7 @@ public class BFS_모래성쌓기1 {
 								}
 							}
 						}
+
 						if(Integer.parseInt(arr[i][j]) <= brr[i][j]) {
 							que.add(new Node(i, j));
 						}
@@ -85,7 +102,7 @@ public class BFS_모래성쌓기1 {
                 	Node node = que.poll();
                 	for(int j = 0; j < 8; j++) {
                     	int xx = dx[j] + node.x, yy = dy[j] + node.y;
-                        if(xx < x && yy < y && xx >= 0 && yy >=0) {
+                        if(xx < x && yy < y && xx >= 0 && yy >= 0) {
                             String val = arr[xx][yy];
                             if(!val.equals(".") && Integer.parseInt(val) > brr[xx][yy]) {
                                 brr[xx][yy]++;
@@ -100,10 +117,9 @@ public class BFS_모래성쌓기1 {
                 	}
             	}
         	}
-			
-			sb.append("#").append(e+1).append(" ").append(cnt).append("\n");
+
+			sb.append("#").append(p+1).append(" ").append(cnt).append("\n");
 		}
-		
 		
 		bw.write(sb.toString());
 		bw.flush();

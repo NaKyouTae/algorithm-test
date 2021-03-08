@@ -10,9 +10,8 @@ import java.util.Queue;
 
 import org.junit.Test;
 
-public class BFS_모래성쌓기2 {
-	
-	public static class Node {
+public class BFS_모래성쌓기3 {
+	public static class Node{ 
 		int x;
 		int y;
 		Node(int x, int y) {
@@ -20,13 +19,12 @@ public class BFS_모래성쌓기2 {
 			this.y = y;
 		}
 	}
+	public static int x, y;
 	public static String[][] arr;
 	public static int[][] brr;
 	public static Queue<Node> que = new LinkedList<>();
-	
-	public static int[] dx = { 0, 0, 1, -1, 1, -1, 1, -1 };
-	public static int[] dy = { 1, -1, 0, 0, 1, -1, -1, 1 };
-	public static int x, y;
+	public static int[] dx = {0, -1, -1, -1, 0, 1, 1, 1};
+	public static int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
 	
 	@Test
 	public void test() throws IOException {
@@ -40,7 +38,7 @@ public class BFS_모래성쌓기2 {
 		
 		int T = Integer.parseInt(br.readLine());
 		
-		for(int e = 0; e < T; e++) {
+		for (int p = 0; p < T; p++) {
 			
 			String[] str = br.readLine().split(" ");
 			x = Integer.parseInt(str[0]);
@@ -56,14 +54,13 @@ public class BFS_모래성쌓기2 {
 				}
 			}
 			
-			
 			for (int i = 0; i < x; i++) {
 				for (int j = 0; j < y; j++) {
-					if(!arr[i][j].equals(".") && !arr[i][j].equals("9")) {						
+					if(!arr[i][j].equals(".") && !arr[i][j].equals("9")) {
 						for (int j2 = 0; j2 < 8; j2++) {
 							int xx = dx[j2] + i, yy = dy[j2] + j;
+							String val = arr[xx][yy];
 							if(xx < x && yy < y && xx >= 0 && yy >= 0) {
-								String val = arr[xx][yy];
 								if(val.equals(".")) {
 									brr[i][j]++;
 								}
@@ -101,9 +98,8 @@ public class BFS_모래성쌓기2 {
             	}
         	}
 			
-			sb.append("#").append(e+1).append(" ").append(cnt).append("\n");
+			sb.append("#").append(p+1).append(" ").append(cnt).append("\n");
 		}
-		
 		
 		bw.write(sb.toString());
 		bw.flush();
