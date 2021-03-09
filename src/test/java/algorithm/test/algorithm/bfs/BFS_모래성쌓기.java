@@ -8,9 +8,6 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import org.junit.Test;
-
-
 //2
 //5 6
 //......
@@ -46,19 +43,14 @@ public class BFS_모래성쌓기 {
 	public static int[] dx = {0, -1, -1, -1, 0, 1, 1, 1};
 	public static int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
 	public static int x, y;
-	@Test
-	public void test() throws IOException {
-		run();
-	}
 	
-	public void run() throws IOException {
+	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
 		
 		for (int p = 0; p < T; p++) {
-			
 			String[] str = br.readLine().split(" ");
 			
 			x = Integer.parseInt(str[0]);
@@ -72,6 +64,7 @@ public class BFS_모래성쌓기 {
 				for (int j = 0; j < y; j++) {
 					arr[i][j] = String.valueOf(s.charAt(j));
 					if(arr[i][j].equals(".")) {
+						visit[i][j] = true;
 						que.add(new Node(i, j));
 					}
 				}
@@ -85,23 +78,39 @@ public class BFS_모래성쌓기 {
 				
 				for (int i = 0; i < size; i++) {
 					Node node = que.poll();
-					visit[node.x][node.y] = true;
 					
 					for (int j = 0; j < 8; j++) {
 						int xx = dx[j] + node.x, yy = dy[j] + node.y;
 						if(xx < x && yy < y && xx >= 0 && yy >= 0) {
 							String val = arr[xx][yy];
-							if(!visit[node.x][node.y] && arr[node.x][node.y].equals(".")) {
-								if(!val.equals("9") && !val.equals(".") && !val.equals("0")) {
-									arr[xx][yy] = Integer.toString(Integer.parseInt(arr[xx][yy])-1);
-								}
-								
-								if(arr[xx][yy].equals("0")){
-									que.add(new Node(xx, yy));
-								}
+							if(!visit[xx][yy] && !val.equals(".") && !val.equals("0")) {
+								int send = Integer.parseInt(arr[xx][yy]) -1;
+								arr[xx][yy] = Integer.toString(send);
+							}
+							
+							if(!visit[xx][yy] && arr[xx][yy].equals("0")){
+								visit[xx][yy] = true;
+								que.add(new Node(xx, yy));
 							}
 						}
 					}
+				}
+
+				System.out.println("cnt : " + cnt);
+				for (int i = 0; i < x; i++) {
+					for (int j = 0; j < y; j++) {
+						System.out.print(arr[i][j] + " ");
+					}
+					System.out.println();
+				}
+				
+				System.out.println();
+				
+				for (int i = 0; i < x; i++) {
+					for (int j = 0; j < y; j++) {
+						System.out.print(visit[i][j] + " ");
+					}
+					System.out.println();
 				}
 				
 				for (int i = 0; i < x; i++) {
