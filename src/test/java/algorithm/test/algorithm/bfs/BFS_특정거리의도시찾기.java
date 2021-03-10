@@ -33,8 +33,9 @@ public class BFS_특정거리의도시찾기 {
 		arr = new int[N][N];
 		brr = new int[N];
 				
-		for (int i = 0; i < M; i++) {
+		for (int i = 0; i < N; i++) {
 			list.add(new ArrayList<>());
+			brr[i] = -1;
 		}
 		
 		for (int i = 0; i < M; i++) {
@@ -44,21 +45,22 @@ public class BFS_특정거리의도시찾기 {
 			list.get(x).add(y);
 		}
 		
+		brr[S-1] = 0;
 		BFS();
 		
-		List<Integer> list = new ArrayList<>();
+		List<Integer> result = new ArrayList<>();
 		for (int i = 0; i < N; i++) {
 			if(brr[i] == D) {
-				list.add(i+1);
+				result.add(i+1);
 			}
 		}
 		
-		long cnt = list.stream().count();
+		long cnt = result.stream().count();
 		
 		if(cnt == 0) {
 			sb.append("-1");
 		}else {
-			for (Integer l : list) {
+			for (Integer l : result) {
 				sb.append(l).append("\n");
 			}
 		}
@@ -76,8 +78,7 @@ public class BFS_특정거리의도시찾기 {
 			int x = que.poll();
 			for (int i = 0; i < list.get(x).size(); i++) {
 				int next = list.get(x).get(i);
-				System.out.println(next);
-				if(brr[next] == 0) {
+				if(brr[next] == -1) {
 					brr[next] = brr[x] + 1;
 					que.add(next);
 				}
