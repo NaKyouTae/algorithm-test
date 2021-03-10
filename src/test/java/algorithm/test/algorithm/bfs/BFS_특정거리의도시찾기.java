@@ -44,7 +44,6 @@ public class BFS_특정거리의도시찾기 {
 			list.get(x).add(y);
 		}
 		
-		brr[S-1] = 0;
 		BFS();
 		
 		List<Integer> list = new ArrayList<>();
@@ -71,12 +70,17 @@ public class BFS_특정거리의도시찾기 {
 	
 	public static void BFS() {
 		Queue<Integer> que = new LinkedList<>();
-		
+		que.add(S-1);
 		
 		while(!que.isEmpty()) {
 			int x = que.poll();
 			for (int i = 0; i < list.get(x).size(); i++) {
-				list.get(x).get(i);
+				int next = list.get(x).get(i);
+				System.out.println(next);
+				if(brr[next] == 0) {
+					brr[next] = brr[x] + 1;
+					que.add(next);
+				}
 			}
 		}
 	}
