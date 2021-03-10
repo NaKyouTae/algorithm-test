@@ -1,4 +1,4 @@
-package algorithm.test.algorithm.bfs;
+package algorithm.test.algorithm.dfs;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -6,21 +6,23 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Queue;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
-public class BFS_특정거리의도시찾기 {
+public class DFS_특정거리의도시찾기 {
+	
+	public static int[][] brr;
 	public static int[][] arr;
-	public static int[] brr;
+	public static boolean[] visit;
 	public static int N, M, D, S;
-	public static List<List<Integer>> list = new ArrayList<>();
+	public static List<Integer> list = new ArrayList<>();
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 		
@@ -28,39 +30,37 @@ public class BFS_특정거리의도시찾기 {
 		M = Integer.parseInt(st.nextToken());
 		D = Integer.parseInt(st.nextToken());
 		S = Integer.parseInt(st.nextToken());
-				
 		
+		brr = new int[N][N];
 		arr = new int[N][N];
-		brr = new int[N];
-				
-		for (int i = 0; i < M; i++) {
-			list.add(new ArrayList<>());
-		}
+		visit = new boolean[N];
 		
 		for (int i = 0; i < M; i++) {
 			String[] str = br.readLine().split(" ");
+			
 			int x = Integer.parseInt(str[0])-1;
 			int y = Integer.parseInt(str[1])-1;
-			list.get(x).add(y);
+			
+			brr[x][y] = 1;
+		}
+		for (int i = S-1; i < N; i++) {
+			visit = new boolean[N];
+			DFS(i, i, 0);
 		}
 		
-		brr[S-1] = 0;
-		BFS();
-		
-		List<Integer> list = new ArrayList<>();
+		int cnt = 0;
 		for (int i = 0; i < N; i++) {
-			if(brr[i] == D) {
+			if(arr[S-1][i] == D) {
 				list.add(i+1);
+				cnt++;
 			}
 		}
-		
-		long cnt = list.stream().count();
 		
 		if(cnt == 0) {
 			sb.append("-1");
 		}else {
-			for (Integer l : list) {
-				sb.append(l).append("\n");
+			for (int i = 0; i < list.size(); i++) {
+				sb.append(list.get(i)).append("\n");
 			}
 		}
 		
@@ -69,14 +69,16 @@ public class BFS_특정거리의도시찾기 {
 		bw.close();
 	}
 	
-	public static void BFS() {
-		Queue<Integer> que = new LinkedList<>();
+	public static void DFS(int s, int idx, int cnt) {
+		arr[s][idx] = cnt;
+		visit[s] = true;
 		
-		
-		while(!que.isEmpty()) {
-			int x = que.poll();
-			for (int i = 0; i < list.get(x).size(); i++) {
-				list.get(x).get(i);
+		for (int i = 0; i < N; i++) {
+			int val = brr[idx][i];
+			if(val == 1) {
+				if(!visit[i]) {
+					DFS(s, i, cnt+1);
+				}
 			}
 		}
 	}
