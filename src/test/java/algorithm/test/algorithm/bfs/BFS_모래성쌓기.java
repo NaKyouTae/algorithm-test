@@ -95,23 +95,6 @@ public class BFS_모래성쌓기 {
 						}
 					}
 				}
-
-				System.out.println("cnt : " + cnt);
-				for (int i = 0; i < x; i++) {
-					for (int j = 0; j < y; j++) {
-						System.out.print(arr[i][j] + " ");
-					}
-					System.out.println();
-				}
-				
-				System.out.println();
-				
-				for (int i = 0; i < x; i++) {
-					for (int j = 0; j < y; j++) {
-						System.out.print(visit[i][j] + " ");
-					}
-					System.out.println();
-				}
 				
 				for (int i = 0; i < x; i++) {
 					for (int j = 0; j < y; j++) {
