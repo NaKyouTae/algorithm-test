@@ -1,4 +1,4 @@
-package algorithm.test.algorithm.bfs;
+package algorithm.test.algorithm.dfs;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 
 import org.junit.Test;
 
-public class BFS_회장뽑기 {
+public class DFS_회장뽑기 {
 	
 	public static int[][] arr;
 	public static int[][] brr;
@@ -50,7 +50,7 @@ public class BFS_회장뽑기 {
 		
 		for(int i = 0; i < n; i++) {				
 			visit = new boolean[n];
-			BFS(i, i, 0);
+			DFS(i, i, 0);
 			Arrays.sort(arr[i]);
 			res[i] = arr[i][arr[i].length-1];
 		}
@@ -73,14 +73,14 @@ public class BFS_회장뽑기 {
 		bw.close();		
 	}
 	
-	public void BFS(int st, int idx, int cnt) {
+	public void DFS(int st, int idx, int cnt) {
 		arr[st][idx] = cnt;
 		visit[idx] = true;
 		
 		for(int i = 0; i < n; i++) {
 			if(brr[idx][i] == 1) {
 				if(!visit[i] || cnt < arr[st][i]) {
-					BFS(st, i, cnt+1);
+					DFS(st, i, cnt+1);
 					System.out.print("st : " + st + " cnt : " + cnt + " i : " + (i+1));
 				}
 			}
