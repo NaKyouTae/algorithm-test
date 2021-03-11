@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
-public class other_ {
+public class other_아기상어 {
 
    static int N;
    static int[][] shark;
