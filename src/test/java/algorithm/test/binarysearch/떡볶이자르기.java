@@ -5,45 +5,42 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.List;
-
-//4 6
-//19 15 10 17
+import java.util.StringTokenizer;
 
 public class 떡볶이자르기 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringBuilder sb = new StringBuilder();
-		String[] str = br.readLine().split(" ");
-		int n = Integer.parseInt(str[0]);
-		int c = Integer.parseInt(str[1]);
 		
-		List<List<Integer>> list = new ArrayList<>();
-		for (int i = 0; i < n; i++) list.add(new ArrayList<>());
-
-		int sum = 0;
-		for (int i = 0; i < n; i++) {
-			int left = 0;
-			int right = list.get(i).size()-1;
-			int center = 0;
-			
-			while(right >= left) {
-				center = (left + right) / 2;
-				
-				sum += (right-center);
-				if(sum == c) break;
-				left = center+1;
-			}
-			if(sum == c) {
-				sb.append(center+1);
-				break;
-			}
+		String[] str = br.readLine().split(" ");
+		int count = Integer.parseInt(str[0]);
+		int want = Integer.parseInt(str[1]);
+		
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		int[] list = new int[count];
+		for (int i = 0; i < count; i++) {
+			list[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		bw.write(sb.toString());
+		int idx = 0;
+		int cut = 1;
+		int sum = 0;
+		while(true) {
+			if(sum == want) break;
+			cut++;
+			sum = 0;
+			
+			if(list[idx] > cut) sum += list[idx] - cut;
+			if(list[idx+1] > cut) sum += list[idx+1] - cut;
+			if(list[idx+2] > cut) sum += list[idx+2] - cut;
+			if(list[idx+3] > cut) sum += list[idx+3] - cut;
+			
+		}
+		
+		bw.write(Integer.toString(cut));
 		bw.flush();
 		bw.close();
 	}
 }
+//4 6
+//19 15 10 17
