@@ -36,6 +36,7 @@ public class DFS와BFS {
 			int x = Integer.parseInt(str[0])-1;
 			int y = Integer.parseInt(str[1])-1;
 			list.get(x).add(y);
+			list.get(y).add(x);
 		}
 		
 		for (int i = S-1; i < N; i++) {
@@ -67,12 +68,16 @@ public class DFS와BFS {
 		for (int j = 0; j < list.get(x).size(); j++) {
 			int n = list.get(x).get(j);
 			if(!dfsVisit[n]) {
-				dfsVisit[n] = true;
 				temp.add(n);
 			}
 		}
 		temp = temp.stream().sorted().collect(Collectors.toList());
-		for(Integer t : temp) dfs(t);
+		for(Integer t : temp) {
+			if(!dfsVisit[t]) {
+				dfsVisit[t] = true;
+				dfs(t);
+			}
+		}
 	}
 	public static void bfs(int s) {
 		List<Integer> temp = new ArrayList<>();
