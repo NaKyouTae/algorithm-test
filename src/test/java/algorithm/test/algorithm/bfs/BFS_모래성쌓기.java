@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import algorithm.test.algorithm.bfs.BFS_모래성쌓기4.Node;
+
 //2
 //5 6
 //......
@@ -63,7 +65,7 @@ public class BFS_모래성쌓기 {
 				String s = br.readLine();
 				for (int j = 0; j < y; j++) {
 					arr[i][j] = String.valueOf(s.charAt(j));
-					if(arr[i][j].equals(".")) {
+					if((arr[i][j]).equals(".")) {
 						visit[i][j] = true;
 						que.add(new Node(i, j));
 					}
