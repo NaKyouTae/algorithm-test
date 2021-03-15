@@ -39,7 +39,7 @@ public class BFS_모래성쌓기4 {
 		}
 	}
 	public static int x, y;
-	public static String[][] arr;
+	public static int[][] arr;
 	public static boolean[][] visit;
 	public static int[] dx = {0, -1, -1, -1, 0, 1, 1, 1};
 	public static int[] dy = {-1, -1, 0, 1, 1, 1, 0, -1};
@@ -56,14 +56,16 @@ public class BFS_모래성쌓기4 {
 			x = Integer.parseInt(st.nextToken());
 			y = Integer.parseInt(st.nextToken());
 			
-			arr = new String[x][y];
+			arr = new int[x][y];
 			visit = new boolean[x][y];
 			
 			for (int i = 0; i < x; i++) {
-				String[] str = br.readLine().split("");
+				String str = br.readLine();
 				for (int j = 0; j < y; j++) {
-					arr[i][j] = str[j];
-					if((arr[i][j]).equals(".")) {
+					int val = str.charAt(j) - '0';
+					if(val >= 1 && val <= 9) {
+						arr[i][j] = val;
+					}else {
 						visit[i][j] = true;
 						que.add(new Node(i, j));
 					}
@@ -79,12 +81,12 @@ public class BFS_모래성쌓기4 {
 					for (int j = 0; j < 8; j++) {
 						int xx = dx[j] + node.x, yy = dy[j] + node.y;
 						if(xx < x && yy < y && xx >= 0 && yy >= 0) {
-							String val = arr[xx][yy];
-							if(!visit[xx][yy] && !val.equals(".") && !val.equals("9") && !val.equals("-1")) {
-								arr[xx][yy] = String.valueOf(Integer.parseInt(val) - 1);
+							int val = arr[xx][yy];
+							if(!visit[xx][yy] && val != 0 && val != 9) {
+								arr[xx][yy]--;
 							}
 							
-							if(!visit[xx][yy] && arr[xx][yy].equals("0")) {
+							if(!visit[xx][yy] && arr[xx][yy] == 0) {
 								visit[xx][yy] = true;
 								que.add(new Node(xx, yy));
 							}
