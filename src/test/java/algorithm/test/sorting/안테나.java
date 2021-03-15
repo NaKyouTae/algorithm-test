@@ -38,11 +38,11 @@ public class 안테나 {
 	}
 	
 	public static int binarySearch(int idx, int left, int right, int center) {
-		if(right >= left) return 0;
 		
 		int sum = center-idx;
-		binarySearch(idx, left, center-1, (left+center-1)/2);
-		binarySearch(idx, center+1, right, (center+1+right)/2);
+		if(right >= left) return sum;
+		sum += binarySearch(idx, left, center-1, (left+center-1)/2);
+		sum += binarySearch(idx, center+1, right, (center+1+right)/2);
 		
 		return sum;
 	}
