@@ -32,7 +32,7 @@ public class 기둥과보설치하기 {
 		}
 	};
 	public static void run(int n, int[][] build_frame) {
-		
+		int[][] answer = {};
 		for (int i = 0; i < build_frame.length; i++) {
 			int x = build_frame[i][0];
 			int y = build_frame[i][1];
@@ -41,12 +41,12 @@ public class 기둥과보설치하기 {
 			
 			if(s == 0) {
 				list.remove(indexOf(x, y, t));
-				if(!isPossible(x, y, t)) {
+				if(!isPossible()) {
 					list.add(new Node(x, y, t));
 				}
 			}else if(s == 1){
 				list.add(new Node(x, y, t));
-				if(!isPossible(x, y, t)) {
+				if(!isPossible()) {
 					list.remove(indexOf(x, y, t));
 				}
 			}
@@ -54,32 +54,49 @@ public class 기둥과보설치하기 {
 		
 		Collections.sort(list, compare);
 		
-		for (int i = 0; i < list.size(); i++) {
-			System.out.print("{" + list.get(i).x + "," + list.get(i).y + "," + list.get(i).t + "},");
+		answer = new int[list.size()][3];
+        for(int i = 0; i < list.size(); i++) {
+            answer[i][0] = list.get(i).x;
+            answer[i][1] = list.get(i).y;
+            answer[i][2] = list.get(i).t;
+        }
+		
+		for (int i = 0; i < answer.length; i++) {
+			for (int j = 0; j < answer[i].length; j++) {
+				System.out.print(answer[i][j] + ", ");
+			}
+			System.out.println();
 		}
 	}
 	
-	public static boolean isPossible(int x, int y, int t) {
-		if(t == 0) {
-			if(y == 0 
-			|| indexOf(x-1, y, 1) != -1
-			|| indexOf(x, y, 1) != -1 
-			|| indexOf(x, y-1, 0) != -1){
-				return true;
-			}else {
-				return false;
-			}
-		}else if(t == 1){
-			if(indexOf(x, y-1, 0) != -1
-			|| indexOf(x+1, y-1, 0) != -1
-			|| (indexOf(x-1, y, 1) != -1 
-			&& indexOf(x+1, y, 1) != -1)){
-				return true;
-			}else {
-				return false;
+	public static boolean isPossible() {
+		for (Node l : list) {
+			int x = l.x;
+			int y = l.y;
+			int t = l.t;
+			
+			if(t == 0) {
+				if(y == 0 
+				|| indexOf(x-1, y, 1) != -1
+				|| indexOf(x, y, 1) != -1 
+				|| indexOf(x, y-1, 0) != -1){
+					continue;
+				}else {
+					return false;
+				}
+			}else if(t == 1){
+				if(indexOf(x, y-1, 0) != -1
+				|| indexOf(x+1, y-1, 0) != -1
+				|| (indexOf(x-1, y, 1) != -1 
+				&& indexOf(x+1, y, 1) != -1)){
+					continue;
+				}else {
+					return false;
+				}
 			}
 		}
-		return false;
+		
+		return true;
 	}
 	
 	public static int indexOf(int x, int y, int t) {
