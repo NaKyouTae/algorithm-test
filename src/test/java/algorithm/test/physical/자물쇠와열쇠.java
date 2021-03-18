@@ -2,7 +2,7 @@ package algorithm.test.physical;
 
 import java.util.Iterator;
 
-public class 좌물쇠와열쇠 {
+public class 자물쇠와열쇠 {
 	public static int[][] lrr, krr, key, lock;
 	public static int size;
 	public static boolean answer;
