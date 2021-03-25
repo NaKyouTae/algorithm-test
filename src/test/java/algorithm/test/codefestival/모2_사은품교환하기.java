@@ -17,7 +17,7 @@ import java.io.OutputStreamWriter;
 //0
 //1
 
-public class 사은품교환하기 {
+public class 모2_사은품교환하기 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
