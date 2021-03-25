@@ -6,6 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+
+//4 3
+//2 3 1 4	// 2
+
+//8 3
+//7 3 1 8 4 6 2 5	// 4
+
+//37 4
+//31 36 20 30 1 9 6 13 3 29 11 25 7 8 2 24 34 18 26 15 23 28 37 19 21 4 32 14 16 10 12 27 22 35 5 17 33		// 12
+
 public class 근묵자흑 {
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,30 +32,15 @@ public class 근묵자흑 {
 			if(totMin > val) totMin = val;
 		}
 		
-		int cnt = 0;
+		int cnt = 0, idx = 0;
 		while(true) {
+			if(idx >= n) break;
+			if(idx == 0) idx += m;
+			else idx += m-1;
+			
 			cnt++;
-			
-			for (int i = 0; i < list.size(); i += m) {
-				int min = Integer.MAX_VALUE;
-				if(i > list.size())i = (list.size()-1) - m;
-				int len = ((i + m) > list.size()) ? list.size():(i+m);
-				for (int j = i; j < len; j++) {
-					if(min > list.get(j)) min = list.get(j);
-				}
-				for (int j = i; j < len; j++) {
-					list.set(j, min); 
-				}
-			}
-			
-			boolean isMin = true;
-			for (Integer l : list) {
-				if(totMin != l) isMin = false;
-			}
-			
-			if(isMin) break;
 		}
 		
-		System.out.println("Hello Goorm! Your input is " + cnt);
+		System.out.println(cnt);
 	}
 }
