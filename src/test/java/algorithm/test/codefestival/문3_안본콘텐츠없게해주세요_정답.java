@@ -23,7 +23,7 @@ import java.util.List;
 //E 5.0 1 2
 //C 2.1 0 2
 
-public class 안본콘텐츠없게해주세요_정답 {
+public class 문3_안본콘텐츠없게해주세요_정답 {
 	public static class Node {
 		String view;
 		String type;

@@ -17,7 +17,7 @@ import java.util.Queue;
 
 
 //1
-public class 시선이동_세모 {
+public class 문4_시선이동_세모 {
 	public static class Node {
 		int x, y;
 		Node(int x, int y){

@@ -27,7 +27,7 @@ import java.util.List;
 //01110
 //00000
 
-public class 상품배치추천_세모 {
+public class 문5_상품배치추천_세모 {
 	public static int ans, N;
 	public static int[][] map;
 	public static boolean[][] visit;

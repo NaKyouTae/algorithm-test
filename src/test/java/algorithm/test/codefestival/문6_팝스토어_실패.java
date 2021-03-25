@@ -14,7 +14,7 @@ import java.io.OutputStreamWriter;
 //1 3 6
 
 // 33
-public class 팝스토어_실패 {
+public class 문6_팝스토어_실패 {
 	public static int N, M, ans = Integer.MIN_VALUE;
 	public static int[][] map;
 	public static boolean[][] visit;

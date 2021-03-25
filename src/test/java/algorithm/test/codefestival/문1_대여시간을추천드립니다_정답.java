@@ -27,7 +27,7 @@ import java.util.List;
 //15:00 ~ 18:23
 //17:43 ~ 20:13
 
-public class 대여시간을추천드립니다_정답 {
+public class 문1_대여시간을추천드립니다_정답 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));

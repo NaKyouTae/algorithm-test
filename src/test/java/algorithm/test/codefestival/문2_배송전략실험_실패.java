@@ -14,7 +14,7 @@ import java.io.OutputStreamWriter;
 //5
 //11111		5
 
-public class 배송전략실험_실패 {
+public class 문2_배송전략실험_실패 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -27,7 +27,7 @@ public class 배송전략실험_실패 {
 		while(true) {
 			ans++;
 			
-			for(int i = 1; i <= 2; i++) {
+			for(int i = 1; i < 2; i++) {
 				if(load[idx+i].equals("1")) idx += i;
 				else continue;
 			}
