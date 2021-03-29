@@ -57,7 +57,7 @@ public class 강의실배정_복습 {
 			}else {
 				if(que.peek() <= item.x) {
 					que.poll();
-					que.offer(item.y);
+					que.add(item.y);
 				}else {
 					que.add(item.y);
 				}
