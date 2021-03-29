@@ -1,4 +1,4 @@
-package algorithm.test.study;
+package algorithm.test.tree;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -32,25 +32,24 @@ public class 전화번호목록 {
 		for (int e = 0; e < T; e++) {
 			int ca = Integer.parseInt(br.readLine());
 			List<String> list = new ArrayList<>();
-			list.add(br.readLine());
+			Trie t = new Trie();
 			
-			String res = "YES";
-			boolean isNo = false;
-			for (int c = 1; c < ca; c++) {
-				String v = br.readLine();
-				for (int i = 0; i < v.length(); i++) {
-					int idx = list.indexOf(v.substring(0, i));
-					if(idx != -1 && list.get(idx).length() == v.substring(0, i).length()) {
-						res = "NO";
-						isNo = true;
-						break;
-					}
-				}
-				if(isNo) break;
-				list.add(v);
+			for (int i = 0; i < ca; i++) {
+				String word = br.readLine();
+				list.add(word);
+				t.insert(word);
 			}
 			
-			sb.append(res).append("\n");
+			boolean is = false;
+			
+			for(String k : list) {
+				if(t.contains(k)) {
+					is = true;
+					break;
+				}
+			}
+			
+			sb.append((is == true) ? "NO":"YES").append("\n");
 		}
 		
         bw.write(sb.toString());
