@@ -1,4 +1,4 @@
-package algorithm.test.study;
+package algorithm.test.algorithm.dp;
 
 import java.util.HashMap;
 import java.util.Map;

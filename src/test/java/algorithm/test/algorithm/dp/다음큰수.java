@@ -1,4 +1,4 @@
-package algorithm.test.study;
+package algorithm.test.algorithm.dp;
 
 
 //최대 100만
