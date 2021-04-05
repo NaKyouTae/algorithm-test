@@ -47,7 +47,6 @@ public class 토마토 {
 		}
 	}
 	public static int X, Y, H, cnt;
-	public static int[][] map;
 	public static int[][][] arr;
 	public static boolean[][][] visit;
 	public static Queue<Node> que = new LinkedList<>();
@@ -60,7 +59,6 @@ public class 토마토 {
 		X = Integer.parseInt(str[1]);
 		H = Integer.parseInt(str[2]);
 		
-		map = new int[X][Y];
 		arr = new int[X][Y][H];
 		visit = new boolean[X][Y][H];
 		
@@ -129,7 +127,5 @@ public class 토마토 {
 				}
 			}
 		}
-		
-		
  	}
  }
