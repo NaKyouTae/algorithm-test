@@ -1,4 +1,4 @@
-package algorithm.test.study;
+package algorithm.test.algorithm.dfs;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 //20 1 15 8 4 10
 
 //https://www.acmicpc.net/problem/10819
-public class 차이를최대로 {
+public class 백트래킹_차이를최대로 {
 	public static int max;
 	public static int[] arr, res;
 	public static boolean[] visit;
