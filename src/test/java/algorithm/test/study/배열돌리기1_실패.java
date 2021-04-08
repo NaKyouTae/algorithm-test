@@ -79,8 +79,7 @@ public class 배열돌리기1_실패 {
 					y = yy;
 				}
 			}
-			System.out.println(i);
-			map[i+1][i] = temp;
+ 			map[i+1][i] = temp;
 		}
 	}
 }
