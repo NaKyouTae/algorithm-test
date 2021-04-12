@@ -79,6 +79,7 @@ public class 배열돌리기_1 {
 			}
 			
 			int r = c/45;
+			
 			if(r > 0) {
 				
 			}else {
