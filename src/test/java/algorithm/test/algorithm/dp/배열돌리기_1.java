@@ -1,4 +1,4 @@
-package algorithm.test.study;
+package algorithm.test.algorithm.dp;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -57,6 +57,8 @@ import java.util.StringTokenizer;
 //https://www.acmicpc.net/problem/17276
 
 public class 배열돌리기_1 {
+	public static int N;
+	public static int[][] map;
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -66,31 +68,27 @@ public class 배열돌리기_1 {
 		for(int z = 0; z < t; z++) {
 			String[] str = br.readLine().split(" ");
 			
-			int n = Integer.parseInt(str[0]);
+			N = Integer.parseInt(str[0]);
 			int c = Integer.parseInt(str[1]);
 			
-			int[][] map = new int[n][n];
+			map = new int[N][N];
 			
-			for (int i = 0; i < n; i++) {
+			for (int i = 0; i < N; i++) {
 				StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-				for (int j = 0; j < n; j++) {
+				for (int j = 0; j < N; j++) {
 					map[i][j] = Integer.parseInt(st.nextToken());
 				}
 			}
 			
-			int r = c/45;
-			
-			if(r > 0) {
-				
-			}else {
-				
+			if(c%360 != 0 ) {
+				move(c/45);
 			}
 			
 			StringBuilder sb = new StringBuilder();
 			
-			for(int i = 0; i < n; i++) {
-				for(int j = 0; j < n; j++) {
-					sb.append(map[i][j]).append(" ");
+			for(int i = 0; i < N; i++) {
+				for(int j = 0; j < N; j++) {
+					sb.append(map[i][j] <= 9 ? "0"+map[i][j]:map[i][j]).append(" ");
 				}
 				sb.append("\n");
 			}
@@ -100,5 +98,37 @@ public class 배열돌리기_1 {
 		
 		bw.flush();
 		bw.close();
+	}
+	
+	public static void move(int c) {
+		int[] dx = {1, 0, -1, 0};
+		int[] dy = {0, 1, 0, -1};
+		int p = N/2;
+		
+		if(c < 0) c += 8;
+		
+		for(int i = 0; i < c; i ++) {
+			for(int j = 0; j < N/2; j++) {				
+				int x = j;
+				int y = j;		
+				int idx = 0;
+				int temp = map[x][y];
+				
+				while(idx < 4) {
+					int mx = dx[idx]*(p-j);
+					int my = dy[idx]*(p-j);
+					int xx = x + mx, yy = y + my;
+					
+					if(xx < j || yy < j || xx > N-j-1 || yy > N-j-1) {
+						idx++;
+					}else {
+						map[x][y] = map[xx][yy];
+						x = xx;
+						y = yy;
+					}
+				}
+				map[x][y+(p-j)] = temp;
+			}
+		}
 	}
 }
