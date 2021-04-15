@@ -30,9 +30,10 @@ public class 달력_1 {
 	public static Comparator<Node> compare = new Comparator<>() {
 		@Override
 		public int compare(Node o1, Node o2) {
-			return (o1.x == o2.x) ? (o1.y > o2.y) ? -1:1 : (o1.x > o2.x) ? 1 : -1;
+			return (o1.x == o2.x) ? (o1.y-o1.x+1 > o2.y-o2.x+1) ? -1:1 : (o1.x > o2.x) ? 1 : -1;
 		}
 	};
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -48,6 +49,7 @@ public class 달력_1 {
 			max = Math.max(max, Math.max(x, y));
 			min = Math.min(min, Math.min(x, y));
 			list.add(new Node(x, y));
+			
 		}
 		
 		Collections.sort(list, compare);
@@ -65,6 +67,13 @@ public class 달력_1 {
 				
 				map[idx][j] = 1;
 			}
+		}
+		
+		for(int i = 0; i < n; i++) {
+			for(int j = 0 ; j < max+2; j++) {
+				System.out.print(map[i][j] + " ");
+			}
+			System.out.println();
 		}
 		
 		int xMax = Integer.MIN_VALUE;
